@@ -3,7 +3,7 @@ from models.merchant import Merchant
 
 def save(merchant):
     sql = "INSERT INTO merchants (merchant_name)  VALUES (%s) RETURNING id"
-    values = [merchant.name]
+    values = [merchant.merchant_name]
     results = run_sql(sql, values)
 
     id = results[0]['id']
@@ -24,3 +24,7 @@ def select(id):
     results = run_sql(sql, values)[0]
     merchant = Merchant(results['merchant_name'])
     return merchant
+
+def delete_all():
+    sql = "DELETE FROM merchants"
+    run_sql(sql)
