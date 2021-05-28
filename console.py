@@ -11,7 +11,7 @@ merchant_repository.delete_all()
 tag1 = Tag("Groceries")
 tag_repository.save(tag1)
 
-merchant1 = Merchant("Asda")
+merchant1 = Merchant("Asda", "Big Shop")
 merchant_repository.save(merchant1)
 
 
