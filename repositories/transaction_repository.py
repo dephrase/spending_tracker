@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.transaction import Transaction
+from models.merchant import Merchant
 
 def save(transaction):
     sql = "INSERT INTO transactions (transaction_name, tag_id, merchant_id, amount_spent) VALUES (%s, %s, %s, %s) RETURNING id"

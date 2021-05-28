@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.merchant import Merchant
+from models.transaction import Transaction
 
 def save(merchant):
     sql = "INSERT INTO merchants (merchant_name, merchant_description) VALUES (%s, %s) RETURNING id"
@@ -32,3 +33,14 @@ def delete(id):
     sql = "DELETE FROM merchants WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def transactions(merchant):
+    transactions = []
+
+    sql = "SELECT * FROM transactions WHERE transactions.merchant_id = %s"
+    values = [merchant.id]
+    results = run_sql(sql, values)
+    for row in results:
+        transaction = Transaction(row['transaction_name'], row['tag_id'], row['merchant_id'], row['amount_spent'], row['id'])
+        transactions.append(transaction)
+    return transactions
