@@ -44,3 +44,8 @@ def transactions(merchant):
         transaction = Transaction(row['transaction_name'], row['tag_id'], row['merchant_id'], row['amount_spent'], row['id'])
         transactions.append(transaction)
     return transactions
+
+def update(merchant):
+    sql = "UPDATE merchants SET (merchant_name, merchant_description) VALUES (%s, %s) WHERE id = %s"
+    values = [merchant.merchant_name, merchant.merchant_description, merchant.id]
+    run_sql(sql, values)
