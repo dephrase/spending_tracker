@@ -1,0 +1,11 @@
+.dropdown-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: [one] 20% [two] 20% [three] 20% [four] 20% [five] 20%;
+    grid-template-rows: 100%;
+}
