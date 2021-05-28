@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.tag import Tag
+from models.transaction import Transaction
 
 def save(tag):
     sql = "INSERT INTO tags (tag_name, tag_description) VALUES (%s, %s) RETURNING id"
@@ -27,3 +28,13 @@ def select(id):
 def delete_all():
     sql = "DELETE FROM tags"
     run_sql(sql)
+
+def transactions(tag):
+    transactions = []
+    sql = "SELECT * FROM transactions WHERE transactions.tag_id = %s"
+    values = [tag.id]
+    results = run_sql(sql, values)
+    for row in results:
+        transaction = Transaction(row['transaction_name'], row['tag_id'], row['merchant_id'], row['amount_spent'], row['id'])
+        transactions.append(transaction)
+    return transactions
