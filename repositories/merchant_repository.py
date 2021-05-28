@@ -2,7 +2,7 @@ from db.run_sql import run_sql
 from models.merchant import Merchant
 
 def save(merchant):
-    sql = "INSERT INTO merchants (merchant_name, merchant_description)  VALUES (%s, %s) RETURNING id"
+    sql = "INSERT INTO merchants (merchant_name, merchant_description) VALUES (%s, %s) RETURNING id"
     values = [merchant.merchant_name, merchant.merchant_description]
     results = run_sql(sql, values)
     id = results[0]['id']
