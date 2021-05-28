@@ -11,3 +11,19 @@ def save(transaction):
 def delete_all():
     sql = "DELETE FROM transactions"
     run_sql(sql)
+
+def select_all():
+    transactions = []
+    sql = "SELECT * FROM transactions"
+    results = run_sql(sql)
+    for row in results:
+        transaction = Transaction(row['transaction_name'], row['tag_id'], row['merchant_id'], row['amount_spent'])
+        transactions.append(transaction)
+    return transactions
+
+def select(id):
+    sql = "SELECT * FROM transactions WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    transaction = Transaction(result['transaction_name'], result['tag_id'], result['merchant_id'], result['amount_spent'])
+    return transaction

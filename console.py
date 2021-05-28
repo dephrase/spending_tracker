@@ -11,10 +11,10 @@ tag_repository.delete_all()
 merchant_repository.delete_all()
 transaction_repository.delete_all()
 
-tag1 = Tag("Groceries")
+tag1 = Tag("Groceries", "Food shopping, bits and bobs for flat maintenance")
 tag_repository.save(tag1)
 
-merchant1 = Merchant("Asda", "Big Shop")
+merchant1 = Merchant("Asda", "Big shop based in the UK")
 merchant_repository.save(merchant1)
 
 transaction1 = Transaction("Weekly Shop", tag1.id, merchant1.id, 40)
