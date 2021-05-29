@@ -10,16 +10,33 @@
 <body>
     <main class="main">
     <div class="header">
-        <div class="transactions-header header-item">
+        <div class="summary-header header-item dropdown">
+            <h2><a href="/">Summary View</a></h2>
+            <div class="dropdown-content">
+                <p>View Spending Summary</p>
+            </div>
+        </div>
+        <div class="transactions-header header-item dropdown">
             <h2><a href="/transactions">Transactions</a></h2>
+            <div class="dropdown-content">
+                <p>View all transactions</p>
+                <p>Create new transaction</p>
+            </div>
         </div>
-        <div class="tags-header header-item">
+        <div class="tags-header header-item dropdown">
            <h2><a href="/tags">Tags</a></h2>
+           <div class="dropdown-content">
+               <p>View all tags</p>
+               <p>Create new tag</p>
+           </div>
         </div>
-        <div class="merchants_header header-item">
+        <div class="merchants_header header-item dropdown">
             <h2><a href="/merchants">Merchants</a></h2>
+            <div class="dropdown-content">
+                <p>View all merchants</p>
+                <p>Create a new merchant</p>
+            </div>
         </div>
-        <div class="header-item"></div>
         <div class="logo header-item">
             <h2>Spending Tracker</h2>
         </div>

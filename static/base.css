@@ -15,3 +15,12 @@
 .tags-header {
     grid-column: two;
 }
+
+.dropdown-content {
+    display: none;
+    
+  }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
