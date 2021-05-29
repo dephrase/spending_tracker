@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h2>Tags</h2>
+
+<table class="tags-table" style="width:100%">
+    <tr>
+      <th>Tag</th>
+      <th>Description</th> 
+    </tr>
+    {% for tag in tags %}
+    <tr>
+    <th>
+        {{tag.tag_name}}
+    </th>
+    <th>
+        {{tag.tag_description}}
+    </th>
+    {% endfor %}
+    </tr>
+    <form action="/tags" method='post'>
+        <tr>
+            <th>
+                <input type="text" name="tag_name" id="tag_name" placeholder="New tag name">
+            </th>
+            <th>
+                <input type="text" name="tag_description" id="tag_description" placeholder="New tag description">
+            </th>
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}

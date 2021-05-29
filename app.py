@@ -1,9 +1,11 @@
 from flask import Flask, render_template
 
-
+from controllers.tag_controller import tags_blueprint
 
 
 app = Flask(__name__)
+
+app.register_blueprint(tags_blueprint)
 
 @app.route('/')
 def home():
