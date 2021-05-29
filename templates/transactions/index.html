@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h2>Transactions</h2>
+
+<table class="transactions-table" style="width:100%">
+    <tr>
+      <th>Transaction</th>
+      <th>Tag</th>
+      <th>Merchant</th> 
+      <th>Amount</th> 
+    </tr>
+    {% for transaction in transactions %}
+    <tr>
+    <th>
+        {{transaction.transaction_name}}
+    </th>
+    <th>
+        {{transaction.tag_id}}
+    </th>
+    <th>
+        {{transaction.merchant_id}}
+    </th>
+    <th>
+        {{transaction.amount_spent}}
+    </th>
+    {% endfor %}
+    </tr>
+    <form action="/transactions" method='post'>
+        <tr>
+            <th>
+                <input type="text" name="transaction_name" id="transaction_name" placeholder="New transaction name">
+            </th>
+            <th>
+                <select name="transaction_tag" id="transaction_tag">
+                    {% for tag in tags %}
+                    <option value="{{tag.tag_name}}">{{tag.tag_name}}</option>
+                    {% endfor %}
+            </th>
+            <th>
+                <select name="transaction_merchant" id="transaction_merchant">
+                    {% for merchant in merchants %}
+                    <option value="{{merchant.merchant_name}}">{{merchant.merchant_name}}</option>
+                    {% endfor %}
+            </th>
+            <th>
+                <input type="number" min="1" step="any" name="transaction_amount" id="transaction_amount" placeholder="Transaction amount">
+            </th>
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}
