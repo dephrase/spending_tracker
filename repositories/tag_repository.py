@@ -29,6 +29,11 @@ def delete_all():
     sql = "DELETE FROM tags"
     run_sql(sql)
 
+def delete(id):
+    sql = "DELETE FROM tags WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
 def transactions(tag):
     transactions = []
     sql = "SELECT * FROM transactions WHERE transactions.tag_id = %s"
