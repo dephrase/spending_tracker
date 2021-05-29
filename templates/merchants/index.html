@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h2>Merchants</h2>
+
+<table class="merchants-table" style="width:100%">
+    <tr>
+      <th>Merchant</th>
+      <th>Description</th> 
+    </tr>
+    {% for merchant in merchants %}
+    <tr>
+    <th>
+        {{merchant.merchant_name}}
+    </th>
+    <th>
+        {{merchant.merchant_description}}
+    </th>
+    {% endfor %}
+    </tr>
+    <form action="/merchants" method='post'>
+        <tr>
+            <th>
+                <input type="text" name="merchant_name" id="merchant_name" placeholder="New merchant name">
+            </th>
+            <th>
+                <input type="text" name="merchant_description" id="merchant_description" placeholder="New merchant description">
+            </th>
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}
