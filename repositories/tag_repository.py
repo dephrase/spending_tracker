@@ -22,14 +22,14 @@ def select(id):
     sql = "SELECT * FROM tags WHERE id = %s"
     values = [id]
     results = run_sql(sql, values)[0]
-    tag = Tag(results['tag_name'], results['tag_description'])
+    tag = Tag(results['tag_name'], results['tag_description'], results['id'])
     return tag
 
 def select_by_name(tagname):
     sql = "SELECT * FROM tags WHERE tag_name = %s"
     values = [tagname]
     results = run_sql(sql, values)[0]
-    tag = Tag(results['tag_name'], results['tag_description'])
+    tag = Tag(results['tag_name'], results['tag_description'], results['id'])
     return tag
 
 def delete_all():

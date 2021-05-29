@@ -22,14 +22,14 @@ def select(id):
     sql = "SELECT * FROM merchants WHERE id = %s"
     values = [id]
     results = run_sql(sql, values)[0]
-    merchant = Merchant(results['merchant_name'], results['merchant_name'])
+    merchant = Merchant(results['merchant_name'], results['merchant_name'], results['id'])
     return merchant
 
 def select_by_name(name):
     sql = "SELECT * FROM merchants WHERE merchant_name = %s"
     values = [name]
     results = run_sql(sql, values)[0]
-    merchant = Merchant(results['merchant_name'], results['merchant_description'])
+    merchant = Merchant(results['merchant_name'], results['merchant_description'], results['id'])
     return merchant
 
 def delete_all():
