@@ -16,13 +16,13 @@
         {{transaction.transaction_name}}
     </th>
     <th>
-        {{transaction.tag_id__tag_name}}
+        {{transaction.tag.tag_name}}
     </th>
     <th>
-        {{transaction.merchant_id}}
+        {{transaction.merchant.merchant_name}}
     </th>
     <th>
-        {{transaction.amount_spent}}
+        £{{transaction.amount_spent}}
     </th>
     {% endfor %}
     </tr>

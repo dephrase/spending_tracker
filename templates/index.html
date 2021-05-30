@@ -1,22 +1,12 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h1>Spending Tracker</h1>
+<h2>Spending Overview</h2>
 
-<p>Track your spending</p>
 
-<table class="transactions-table" style="width:100%">
-    <tr>
-      <th>Transaction</th>
-      <th>Merchant</th> 
-      <th>Tag</th>
-      <th>Amount</th>
-    </tr>
-    <tr>
-    <th>
-    <th>
-    <th>
-    <th>
-    </tr>
-  </table>
+<h4>You have spent a total of £{{total_spending}}</h4>
+<h4>You have made {{total_transactions}} transactions</h4>
+<h4>Your most frequent merchant is {{frequent_merchant}}</h4>
+
+
 {% endblock %}

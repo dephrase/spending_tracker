@@ -4,7 +4,7 @@ from models.merchant import Merchant
 
 def save(transaction):
     sql = "INSERT INTO transactions (transaction_name, tag_id, merchant_id, amount_spent) VALUES (%s, %s, %s, %s) RETURNING id"
-    values = [transaction.transaction_name, transaction.tag_id, transaction.merchant_id, transaction.amount_spent]
+    values = [transaction.transaction_name, transaction.tag.id, transaction.merchant.id, transaction.amount_spent]
     results = run_sql(sql, values)
     id = results[0]['id']
     transaction.id = id
@@ -33,3 +33,32 @@ def select(id):
     result = run_sql(sql, values)[0]
     transaction = Transaction(result['transaction_name'], result['tag_id'], result['merchant_id'], result['amount_spent'])
     return transaction
+
+def update(transaction):
+    sql = "UPDATE transactions SET (transaction_name, tag_id, merchant_id, amount_spent) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [transaction.transaction_name, transaction.tag.id, transaction.merchant.id, transaction.amount_spent]
+    run_sql(sql, values)
+
+def get_total_spending():
+    transactions = select_all()
+    total_spending = 0
+    for transaction in transactions:
+        total_spending += transaction.amount_spent
+    return total_spending
+
+def get_total_transactions():
+    transactions = select_all()
+    count = 0
+    for transaction in transactions:
+        count += 1
+    return count
+
+def get_frequent_merchant():
+    transactions = select_all()
+    results = {}
+    for transaction in transactions:
+        if 'transaction.merchant_id' in results.keys():
+            results['transaction.merchant.name'] += 1
+        else:
+            results['transaction.merchant.name'] = 1
+    
