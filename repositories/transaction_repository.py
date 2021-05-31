@@ -1,6 +1,10 @@
+from re import T
+from models.tag import Tag
 from db.run_sql import run_sql
 from models.transaction import Transaction
 from models.merchant import Merchant
+import repositories.tag_repository as tag_repository
+import repositories.merchant_repository as merchant_repository
 
 def save(transaction):
     sql = "INSERT INTO transactions (transaction_name, tag_id, merchant_id, amount_spent) VALUES (%s, %s, %s, %s) RETURNING *"
@@ -23,7 +27,9 @@ def select_all():
     sql = "SELECT * FROM transactions"
     results = run_sql(sql)
     for row in results:
-        transaction = Transaction(row['transaction_name'], row['tag_id'], row['merchant_id'], row['amount_spent'])
+        tag = tag_repository.select(row['tag_id'])
+        merchant = merchant_repository.select(row['merchant_id'])
+        transaction = Transaction(row['transaction_name'], tag, merchant, row['amount_spent'])
         transactions.append(transaction)
     return transactions
 
@@ -31,7 +37,9 @@ def select(id):
     sql = "SELECT * FROM transactions WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    transaction = Transaction(result['transaction_name'], result['tag_id'], result['merchant_id'], result['amount_spent'])
+    tag = tag_repository.select(result['tag_id'])
+    merchant = merchant_repository.select(result['merchant_id'])
+    transaction = Transaction(result['transaction_name'], tag, merchant, result['amount_spent'])
     return transaction
 
 def update(transaction):
