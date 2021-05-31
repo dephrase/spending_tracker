@@ -79,6 +79,15 @@ def get_frequent_merchant():
     listresult = [visits, location]
     return listresult
 
-        
+def get_most_expensive_transaction():
+    transactions = select_all()
+    expensivetransaction = ""
+    topprice = 0
+    for transaction in transactions:
+        if transaction.amount_spent > topprice:
+            topprice = transaction.amount_spent
+            expensivetransaction = transaction
+    return expensivetransaction
+
 
     
