@@ -1,18 +1,24 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h2>Spending Overview</h2>
-
-<div class="box">
-    <h4>You have spent a total of £{{total_spending}}</h4>
+<h2 class="title-text">Spending Overview</h2>
+<div class="content">
+<div class="box1">
+    <h4 class="left">You have spent a total of £{{total_spending}}</h4>
 </div>
-<div class="box">
-<h4>You have made {{total_transactions}} transactions</h4>
+<div class="box2">
+    <h4 class="right">You have made {{total_transactions}} transactions</h4>
 </div>
-<h4>Your most frequent merchant is {{frequent_merchant_name}}, with {{frequent_merchant_visits}} purchases</h4>
-<h4>Your most expensive transaction was {{most_expensive_transaction.transaction_name}}, costing £{{most_expensive_transaction.amount_spent}} from {{most_expensive_transaction.merchant.merchant_name}}</h4>
-
-<h4>Your most frequent tag was {{frequent_tag_name}} with {{frequent_tag_purchases}}</h4>
-
+<div class=box1>
+    <h4 class="left">Your most frequent merchant is {{frequent_merchant_name}}, with {{frequent_merchant_visits}} purchases</h4>
+</div>
+<div class="box3">
+    <h4 class="right">Your most expensive transaction was {{most_expensive_transaction.transaction_name}},</h4>
+    <h4 class="right">costing £{{most_expensive_transaction.amount_spent}} from {{most_expensive_transaction.merchant.merchant_name}}</h4>
+</div>
+<div class="box2">
+    <h4 class="left">Your most frequent tag was {{frequent_tag_name}}, with {{frequent_tag_purchases}} transactions</h4>
+</div>
+</div>
 
 {% endblock %}
