@@ -30,7 +30,7 @@ def select_all():
     for row in results:
         tag = tag_repository.select(row['tag_id'])
         merchant = merchant_repository.select(row['merchant_id'])
-        transaction = Transaction(row['transaction_name'], tag, merchant, row['amount_spent'])
+        transaction = Transaction(row['transaction_name'], tag, merchant, row['amount_spent'], row['id'])
         transactions.append(transaction)
     return transactions
 
@@ -40,12 +40,12 @@ def select(id):
     result = run_sql(sql, values)[0]
     tag = tag_repository.select(result['tag_id'])
     merchant = merchant_repository.select(result['merchant_id'])
-    transaction = Transaction(result['transaction_name'], tag, merchant, result['amount_spent'])
+    transaction = Transaction(result['transaction_name'], tag, merchant, result['amount_spent'], result['id'])
     return transaction
 
 def update(transaction):
     sql = "UPDATE transactions SET (transaction_name, tag_id, merchant_id, amount_spent) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [transaction.transaction_name, transaction.tag.id, transaction.merchant.id, transaction.amount_spent]
+    values = [transaction.transaction_name, transaction.tag.id, transaction.merchant.id, transaction.amount_spent, transaction.id]
     run_sql(sql, values)
 
 def get_total_spending():
@@ -79,6 +79,23 @@ def get_frequent_merchant():
     listresult = [visits, location]
     return listresult
 
+def get_frequent_tag():
+    transactions = select_all()
+    results = {}
+    for transaction in transactions:
+        if transaction.tag.tag_name in results.keys():
+            results[transaction.tag.tag_name] += 1
+        else:
+            results[transaction.tag.tag_name] = 1
+    purchases = 0
+    tag = ""
+    for key in results:
+        if results[key] > purchases:
+            purchases = results[key]
+            tag = key
+    listresult = [purchases, tag]
+    return listresult
+
 def get_most_expensive_transaction():
     transactions = select_all()
     expensivetransaction = ""
@@ -88,6 +105,8 @@ def get_most_expensive_transaction():
             topprice = transaction.amount_spent
             expensivetransaction = transaction
     return expensivetransaction
+
+
 
 
     

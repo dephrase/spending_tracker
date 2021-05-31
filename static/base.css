@@ -8,12 +8,7 @@
 
 .header-item {
     padding-top: 30px;
-    background-color: dodgerblue;
     width: 200px;
-}
-
-.tags-header {
-    grid-column: two;
 }
 
 .dropdown-content {
@@ -24,3 +19,4 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Transaction: </h2>
+<p>{{transaction.transaction_name}}</p>
+<h2>Tag: </h2>
+<p>{{transaction.tag.tag_name}}</p>
+<h2>Merchant: </h2>
+<p>{{transaction.merchant.merchant_name}}</p>
+<h2>Amount: </h2>
+<p>{{transaction.amount_spent}}</p>
+
+{% endblock %}

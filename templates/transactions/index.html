@@ -13,7 +13,7 @@
     {% for transaction in transactions %}
     <tr>
     <th>
-        {{transaction.transaction_name}}
+        <a href="/transactions/{{ transaction.id }}/edit">{{transaction.transaction_name}}</a>
     </th>
     <th>
         {{transaction.tag.tag_name}}
