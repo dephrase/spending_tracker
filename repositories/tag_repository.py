@@ -50,3 +50,8 @@ def transactions(tag):
         transaction = Transaction(row['transaction_name'], row['tag_id'], row['merchant_id'], row['amount_spent'], row['id'])
         transactions.append(transaction)
     return transactions
+
+def update(tag):
+    sql = "UPDATE tags SET (tag_name, tag_description) = (%s, %s) WHERE id = %s"
+    values = [tag.tag_name, tag.tag_description, tag.id]
+    run_sql(sql, values)

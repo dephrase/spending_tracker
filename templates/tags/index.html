@@ -11,7 +11,7 @@
     {% for tag in tags %}
     <tr>
     <th>
-        {{tag.tag_name}}
+        <a href="/tags/{{ tag.id }}/edit">{{tag.tag_name}}</a>
     </th>
     <th>
         {{tag.tag_description}}

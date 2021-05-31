@@ -10,13 +10,28 @@ def tags():
     tags = tag_repository.select_all()
     return render_template("tags/index.html", tags=tags)
 
-@tags_blueprint.route("/tags", methods=["POST"])
-def show_tags():
-    tagname = request.form['tag_name']
-    tagdesc = request.form['tag_description']
-    newtag = Tag(tagname, tagdesc)
-    tag_repository.save(newtag)
-    return redirect('/tags')
+@tags_blueprint.route("/tags", methods=['POST'])
+def add_tags():
+    tag_name = request.form['tag_name']
+    tag_description = request.form['tag_description']
+    tag = Tag(tag_name, tag_description)
+    tag_repository.save(tag)
+    return redirect("/tags")
 
-# @tags_blueprint.route("/tags/show")
+@tags_blueprint.route("/tags/<id>")
+def show_tags(id):
+    tag = tag_repository.select(id)
+    return render_template("/tags/show.html", tag=tag)
 
+@tags_blueprint.route("/tags/<id>/edit")
+def edit_tag(id):
+    tag = tag_repository.select(id)
+    return render_template('tags/edit.html', tag=tag)
+
+@tags_blueprint.route("/tags/<id>", methods=["POST"])
+def update_tag(id):
+    tag_name = request.form['name']
+    tag_description= request.form['desc']
+    tag = Tag(tag_name, tag_description, id)
+    tag_repository.update(tag)
+    return redirect("/tags/"+id)
