@@ -10,10 +10,28 @@ def merchants():
     merchants = merchant_repository.select_all()
     return render_template("/merchants/index.html", merchants = merchants)
 
-@merchants_blueprint.route("/merchants", methods=["POST"])
-def show_merchants():
-    merchantname = request.form['merchant_name']
-    merchantdesc = request.form['merchant_description']
-    merchant = Merchant(merchantname, merchantdesc)
+@merchants_blueprint.route("/merchants/<id>", methods=["GET"])
+def show_merchants(id):
+    merchant = merchant_repository.select(id)
+    return render_template("/merchants/show.html", merchant=merchant)
+
+@merchants_blueprint.route("/merchants", methods=['POST'])
+def add_merchants():
+    merchant_name = request.form['merchant_name']
+    merchant_description = request.form['merchant_description']
+    merchant = Merchant(merchant_name, merchant_description)
     merchant_repository.save(merchant)
     return redirect("/merchants")
+
+@merchants_blueprint.route("/merchants/<id>/edit")
+def edit_merchant(id):
+    merchant = merchant_repository.select(id)
+    return render_template('merchants/edit.html', merchant=merchant)
+
+@merchants_blueprint.route("/merchants/<id>", methods=["POST"])
+def update_merchant(id):
+    merchant_name = request.form['name']
+    merchant_description = request.form['desc']
+    merchant = Merchant(merchant_name, merchant_description, id)
+    merchant_repository.update(merchant)
+    return redirect("/merchants/"+id)

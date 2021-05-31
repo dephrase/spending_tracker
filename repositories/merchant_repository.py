@@ -53,6 +53,6 @@ def transactions(merchant):
     return transactions
 
 def update(merchant):
-    sql = "UPDATE merchants SET (merchant_name, merchant_description) VALUES (%s, %s) WHERE id = %s"
+    sql = "UPDATE merchants SET (merchant_name, merchant_description) = (%s, %s) WHERE id = %s"
     values = [merchant.merchant_name, merchant.merchant_description, merchant.id]
     run_sql(sql, values)

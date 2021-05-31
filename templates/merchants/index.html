@@ -11,7 +11,7 @@
     {% for merchant in merchants %}
     <tr>
     <th>
-        {{merchant.merchant_name}}
+        <a href="/merchants/{{ merchant.id }}/edit">{{merchant.merchant_name}}</a>
     </th>
     <th>
         {{merchant.merchant_description}}
