@@ -27,6 +27,7 @@ def home():
     frequent_tag = transaction_repository.get_frequent_tag()
     frequent_tag_purchases = frequent_tag[0]
     frequent_tag_name = frequent_tag[1]
+    
     return render_template('index.html', total_spending=total_spending, total_transactions=total_transactions, frequent_merchant_name=frequent_merchant_name, frequent_merchant_visits=frequent_merchant_visits, most_expensive_transaction=most_expensive_transaction, frequent_tag_purchases=frequent_tag_purchases, frequent_tag_name=frequent_tag_name)
 
 if __name__ == '__main__':
