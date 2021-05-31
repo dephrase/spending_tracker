@@ -21,7 +21,9 @@ def home():
     total_spending = transaction_repository.get_total_spending()
     total_transactions = transaction_repository.get_total_transactions()
     frequent_merchant = transaction_repository.get_frequent_merchant()
-    return render_template('index.html', total_spending=total_spending, total_transactions=total_transactions)
+    frequent_merchant_name = frequent_merchant[1]
+    frequent_merchant_visits = frequent_merchant[0]
+    return render_template('index.html', total_spending=total_spending, total_transactions=total_transactions, frequent_merchant_name=frequent_merchant_name, frequent_merchant_visits=frequent_merchant_visits)
 
 if __name__ == '__main__':
     app.run(debug=True)

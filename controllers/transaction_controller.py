@@ -24,6 +24,8 @@ def add_transactions():
     merchant = merchant_repository.select_by_name(transactionmerchant)
 
     transactionamount = request.form['transaction_amount']
-    newtransaction = Transaction(transactionname, tag.id, merchant.id, transactionamount)
+    newtransaction = Transaction(transactionname, tag, merchant, transactionamount)
     transaction_repository.save(newtransaction)
     return redirect("/transactions")
+
+    

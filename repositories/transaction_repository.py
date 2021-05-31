@@ -57,8 +57,17 @@ def get_frequent_merchant():
     transactions = select_all()
     results = {}
     for transaction in transactions:
-        if 'transaction.merchant_id' in results.keys():
-            results['transaction.merchant.name'] += 1
+        if 'transaction.merchant.merchant_name' in results.keys():
+            results['transaction.merchant.merchant_name'] += 1
         else:
-            results['transaction.merchant.name'] = 1
+            results['transaction.merchant.merchant_name'] = 1
+    visits = 0
+    location = ""
+    for key, value in results:
+        if value > visits:
+            visits = value
+            location = key
+    listresult = [visits, location]
+    return listresult
+
     
