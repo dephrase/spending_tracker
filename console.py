@@ -21,11 +21,17 @@ tag_repository.save(tag2)
 merchant1 = Merchant("Asda", "Big shop based in the UK")
 merchant_repository.save(merchant1)
 
+merchant2 = Merchant("Amazon", "Jeffs Shoap")
+merchant_repository.save(merchant2)
+
 transaction1 = Transaction("Weekly Shop", tag1, merchant1, 40)
 transaction_repository.save(transaction1)
 
 transaction2 = Transaction("WD40", tag2, merchant1, 5)
 transaction_repository.save(transaction2)
+
+transaction3 = Transaction("Torch", tag2, merchant2, 15)
+transaction_repository.save(transaction3)
 
 
 

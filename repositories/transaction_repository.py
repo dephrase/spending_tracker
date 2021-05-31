@@ -5,6 +5,7 @@ from models.transaction import Transaction
 from models.merchant import Merchant
 import repositories.tag_repository as tag_repository
 import repositories.merchant_repository as merchant_repository
+import pdb
 
 def save(transaction):
     sql = "INSERT INTO transactions (transaction_name, tag_id, merchant_id, amount_spent) VALUES (%s, %s, %s, %s) RETURNING *"
@@ -65,17 +66,19 @@ def get_frequent_merchant():
     transactions = select_all()
     results = {}
     for transaction in transactions:
-        if 'transaction.merchant.merchant_name' in results.keys():
-            results['transaction.merchant.merchant_name'] += 1
+        if transaction.merchant.merchant_name in results.keys():
+            results[transaction.merchant.merchant_name] += 1
         else:
-            results['transaction.merchant.merchant_name'] = 1
+            results[transaction.merchant.merchant_name] = 1
     visits = 0
     location = ""
-    for key, value in results:
-        if value > visits:
-            visits = value
+    for key in results:
+        if results[key] > visits:
+            visits = results[key]
             location = key
     listresult = [visits, location]
     return listresult
+
+        
 
     
