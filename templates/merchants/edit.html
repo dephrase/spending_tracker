@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="box1 left">
 <h2>Update Merchant</h2>
 
 <form action="/merchants/{{ merchant.id }}" method="POST">
@@ -18,5 +18,5 @@
     </div>
 
 </form>
-
+</div>
 {% endblock %}

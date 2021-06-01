@@ -1,8 +1,8 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="box3">
-<h2 class="left">Edit your budget</h2>
+<div class="box3 left">
+<h2>Edit your budget</h2>
 <br>
 <form action="/myprofile/{{user.id}}/{{user.user_name}}" method="POST">
     <label for="budget">Your new Budget: £</label>
