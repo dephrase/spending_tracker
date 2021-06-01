@@ -24,13 +24,13 @@
     <h4 class="left">Your most frequent tag was {{frequent_tag_name}}, with {{frequent_tag_purchases}} transactions</h4>
 </div>
 <div class="box1">
-    <h4 class="right">Spending breakdown by tag</h4>
+    <h4 class="centre">Spending breakdown by tag</h4>
     {% for key in spent_dict %}
         <p class="left">£{{spent_dict[key]}} spent on {{key}}</p>
     {% endfor %}
 </div>
 <div class="box3">
-    <h4 class="left">Spending breakdown by Merchant</h4>
+    <h4 class="centre">Spending breakdown by Merchant</h4>
     {% for key in merch_dict %}
         <p class="right">£{{merch_dict[key]}} spent on {{key}}</p>
     {% endfor %}
