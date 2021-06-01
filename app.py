@@ -3,6 +3,7 @@ from models.user import User
 from flask import Flask, render_template
 
 from controllers.tag_controller import tags_blueprint
+from controllers.user_controller import users_blueprint
 from controllers.merchant_controller import merchants_blueprint
 from controllers.transaction_controller import transactions_blueprint
 import repositories.transaction_repository as transaction_repository
@@ -10,13 +11,10 @@ import repositories.merchant_repository as merchant_repository
 import repositories.user_repository as user_repository
 import repositories.tag_repository as tag_repository
 
-import matplotlib.pyplot as plt
-import numpy as np
-
-
 app = Flask(__name__)
 
 app.register_blueprint(tags_blueprint)
+app.register_blueprint(users_blueprint)
 app.register_blueprint(merchants_blueprint)
 app.register_blueprint(transactions_blueprint)
 

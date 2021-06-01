@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="box1">
+    <h2 class="left">Welcome {{user.user_name}}</h2>
+    <h2 class="left">Your current budget is: {{user.budget}}</h2>
+    <br>
+    <a class="left" href="myprofile/{{user.id}}/edit">Click here to edit your budget</a>
+
+
+
+</div>
+{% endblock %}

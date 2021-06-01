@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="box3">
+<h2 class="left">Edit your budget</h2>
+<br>
+<form action="/myprofile/{{user.id}}/{{user.user_name}}" method="POST">
+    <label for="budget">Your new Budget: £</label>
+    <input type="number" value={{user.budget}} min="1" step="any" name="budget" id="budget" placeholder={{user.budget}}>
+    <input type="submit">
+</form>
+
+
+</div>
+{% endblock %}

@@ -9,9 +9,9 @@ def save(user):
     user.id = id
 
 def select(id):
-    sql = "SELECT * FROM transactions WHERE id = %s"
+    sql = "SELECT * FROM users WHERE id = %s"
     values = [id]
-    results = run_sql(sql, values)
+    results = run_sql(sql, values)[0]
     user = User(results['user_name'], results['budget'], results['id'])
     return user
 
