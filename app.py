@@ -1,4 +1,5 @@
 from models.transaction import Transaction
+from models.user import User
 from flask import Flask, render_template
 
 from controllers.tag_controller import tags_blueprint
@@ -49,8 +50,10 @@ def home():
     
     userlist = user_repository.select_all()
     user = userlist[0]
+    User.budget_status = staticmethod(User.budget_status)
+    budget_status = User.budget_status(user, total_spending)
 
-    return render_template('index.html', total_spending=total_spending, total_transactions=total_transactions, frequent_merchant_name=frequent_merchant_name, frequent_merchant_visits=frequent_merchant_visits, most_expensive_transaction=most_expensive_transaction, frequent_tag_purchases=frequent_tag_purchases, frequent_tag_name=frequent_tag_name, tags=tags, spent_dict=spent_dict, merch_dict=merch_dict, user=user)
+    return render_template('index.html', total_spending=total_spending, total_transactions=total_transactions, frequent_merchant_name=frequent_merchant_name, frequent_merchant_visits=frequent_merchant_visits, most_expensive_transaction=most_expensive_transaction, frequent_tag_purchases=frequent_tag_purchases, frequent_tag_name=frequent_tag_name, tags=tags, spent_dict=spent_dict, merch_dict=merch_dict, user=user, budget_status=budget_status)
 
 if __name__ == '__main__':
     app.run(debug=True)
