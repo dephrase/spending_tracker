@@ -5,6 +5,9 @@
     align-items: flex-start;
     font-size: 14px;
     font-family: 'Vollkorn', serif;
+    background-color: #edf5e1;
+    color: #05386b;
+    padding-bottom: 35px;
 }
 
 .header-item {
@@ -73,11 +76,6 @@
     font-size: 25px;
 }
 
-.title-text {
-    
-    
-}
-
 .content {
     display: flex;
     flex-direction: column;
@@ -92,5 +90,42 @@
     position: relative;
     padding-right: 45px;
     text-align: right;
+    align-content: center;
 }
 
+.links {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    padding-top: 70px;
+}
+
+.linktext {
+    color: #379683;
+    font-family: 'Vollkorn', serif;
+    font-size: 25px;
+}
+
+.showtransaction {
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+.transactions-table {
+    border: 1px solid black;
+}
+
+tr {
+    border: 1px solid #05386b;
+}
+
+th {
+    border: 1px solid #05386b;
+}
+
+.submitclass {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+
+}

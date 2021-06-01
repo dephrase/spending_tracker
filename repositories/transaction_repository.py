@@ -55,6 +55,12 @@ def get_total_spending():
         total_spending += transaction.amount_spent
     return total_spending
 
+def get_total_of_list(transactions):
+    total_spending = 0
+    for transaction in transactions:
+        total_spending += transaction.amount_spent
+    return total_spending
+
 def get_total_transactions():
     transactions = select_all()
     count = 0

@@ -53,3 +53,4 @@ def update_transaction(id):
     transaction = Transaction(transaction_name, tag, merchant, transaction_amount, id)
     transaction_repository.update(transaction)
     return redirect("/transactions/"+id)
+

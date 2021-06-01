@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Transaction: </h2>
-<p>{{transaction.transaction_name}}</p>
-<h2>Tag: </h2>
-<p>{{transaction.tag.tag_name}}</p>
-<h2>Merchant: </h2>
-<p>{{transaction.merchant.merchant_name}}</p>
-<h2>Amount: </h2>
-<p>{{transaction.amount_spent}}</p>
+<div class="box1">
+<h2 class="showtransaction">Transaction: {{transaction.transaction_name}}</h2>
+<h2 class="showtransaction">Tag: {{transaction.tag.tag_name}}</h2>
+<h2 class="showtransaction">Merchant: {{transaction.merchant.merchant_name}}</h2>
+<h2 class="showtransaction">Amount: {{transaction.amount_spent}}</h2>
+</div>
 
 {% endblock %}

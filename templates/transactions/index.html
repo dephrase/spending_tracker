@@ -1,8 +1,9 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h2>Transactions</h2>
-<h3>Total spending: £{{total_spending}}</h3>
+<div class="box1">
+<h2 class="left">Transactions</h2>
+<h3 class="left">Total spending: £{{total_spending}}</h3>
 
 <table class="transactions-table" style="width:100%">
     <tr>
@@ -49,7 +50,10 @@
             </th>
         </tr>
     </table>
-    <input type="submit" value="Submit">
+    <div class="submitclass">
+    <input type="submit" value="Submit" class="submit">
+    </div>
     </form>
+</div>
 
 {% endblock %}
