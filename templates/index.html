@@ -25,6 +25,10 @@
 </div>
 <div class="box1">
     <h4 class="right">Transaction breakdown by tag</h4>
+    {% for key in spent_dict %}
+        <p class="left">£{{spent_dict[key]}} spent on {{key}}</p>
+    {% endfor %}
+
 </div>
 <div class="headerbox">
     <h4 class="centre">Get more info on your spending</h4>
