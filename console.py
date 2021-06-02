@@ -40,16 +40,19 @@ merchant_repository.save(merchant3)
 merchant4 = Merchant("Scotrail", "Thieving bastarts")
 merchant_repository.save(merchant4)
 
+merchant5 = Merchant("Virgin", "Mortgage Provider")
+merchant_repository.save(merchant5)
+
 transaction1 = Transaction("Weekly Shop", tag1, merchant1, 40)
 transaction_repository.save(transaction1)
 
 transaction2 = Transaction("Monthly train ticket", tag2, merchant4, 32)
 transaction_repository.save(transaction2)
 
-transaction3 = Transaction("Torch", tag2, merchant2, 15)
+transaction3 = Transaction("Mortgage", tag3, merchant5, 380)
 transaction_repository.save(transaction3)
 
-transaction4 = Transaction("KFC", tag4, merchant3, 18)
+transaction4 = Transaction("KFC", tag4, merchant3, 20)
 transaction_repository.save(transaction4)
 
 transaction5 = Transaction("McDonalds", tag4, merchant3, 22)
