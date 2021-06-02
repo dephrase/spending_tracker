@@ -106,9 +106,13 @@
 }
 
 .linktext {
-    color: #379683;
+    color: #05386b;
     font-family: 'Vollkorn', serif;
     font-size: 25px;
+}
+
+.linktext:hover {
+    color: #5ba4ee;
 }
 
 .showtransaction {
@@ -142,4 +146,12 @@ th {
 
 a {
     text-decoration: none;
+}
+
+.headerstyle {
+    color: #05386b;
+}
+
+.headerstyle:hover {
+    color: #5ba4ee;
 }
