@@ -54,3 +54,11 @@ def update_transaction(id):
     transaction_repository.update(transaction)
     return redirect("/transactions/"+id)
 
+@transactions_blueprint.route("/transactions/<tag_id>/tagview", methods=['GET'])
+def filter_bytag(tag_id):
+    tag = tag_repository.select(tag_id)
+    transactions = tag_repository.transactions(tag)
+    return render_template('/transactions/filter.html', transactions=transactions)
+
+
+

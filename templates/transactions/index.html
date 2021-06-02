@@ -18,7 +18,7 @@
         <a class="box1link" href="/transactions/{{ transaction.id }}/edit">{{transaction.transaction_name}}</a>
     </th>
     <th>
-        {{transaction.tag.tag_name}}
+        <a class="box1link" href="/transactions/{{ transaction.tag.id }}/tagview"></a>{{transaction.tag.tag_name}}
     </th>
     <th>
         {{transaction.merchant.merchant_name}}
