@@ -155,3 +155,11 @@ a {
 .headerstyle:hover {
     color: #5ba4ee;
 }
+
+.box1link {
+    color: #edf5e1;
+}
+
+.box1link:hover {
+    color: #cdcecb;
+}

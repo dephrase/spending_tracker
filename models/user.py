@@ -11,7 +11,7 @@ class User:
 
         userstatus = ""
         if status <= 0:
-            userstatus = "In Debt"
+            userstatus = "Not good"
         elif status > 0 and status <= 50:
             userstatus = "Red"
         elif status >= 51 and status <= 150:
