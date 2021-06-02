@@ -37,13 +37,15 @@ def home():
     for tag in tags:
         listoftrans = tag_repository.transactions(tag)
         amountspent = transaction_repository.get_total_of_list(listoftrans)
-        spent_dict[tag.tag_name] = amountspent
+        if amountspent > 0:
+            spent_dict[tag.tag_name] = amountspent
     
     merch_dict = {}
     for merchant in merchants:
         listoftrans = merchant_repository.transactions(merchant)
         amountspent = transaction_repository.get_total_of_list(listoftrans)
-        merch_dict[merchant.merchant_name] = amountspent
+        if amountspent > 0:
+            merch_dict[merchant.merchant_name] = amountspent
 
     
     userlist = user_repository.select_all()
