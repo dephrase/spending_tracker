@@ -33,19 +33,23 @@ def home():
     tags = tag_repository.select_all()
     merchants = merchant_repository.select_all()
 
+    tag_percentage = {}
     spent_dict = {}
     for tag in tags:
         listoftrans = tag_repository.transactions(tag)
         amountspent = transaction_repository.get_total_of_list(listoftrans)
         if amountspent > 0:
             spent_dict[tag.tag_name] = amountspent
-    
+            tag_percentage[tag.tag_name] = round(((amountspent / total_spending) * 100), 2)
+
+    merchant_percentage = {}
     merch_dict = {}
     for merchant in merchants:
         listoftrans = merchant_repository.transactions(merchant)
         amountspent = transaction_repository.get_total_of_list(listoftrans)
         if amountspent > 0:
             merch_dict[merchant.merchant_name] = amountspent
+            merchant_percentage[merchant.merchant_name] = round(((amountspent / total_spending) * 100), 2)
 
     
     userlist = user_repository.select_all()
@@ -53,7 +57,7 @@ def home():
     User.budget_status = staticmethod(User.budget_status)
     budget_status = User.budget_status(user, total_spending)
 
-    return render_template('index.html', total_spending=total_spending, total_transactions=total_transactions, frequent_merchant_name=frequent_merchant_name, frequent_merchant_visits=frequent_merchant_visits, most_expensive_transaction=most_expensive_transaction, frequent_tag_purchases=frequent_tag_purchases, frequent_tag_name=frequent_tag_name, tags=tags, spent_dict=spent_dict, merch_dict=merch_dict, user=user, budget_status=budget_status)
+    return render_template('index.html', total_spending=total_spending, total_transactions=total_transactions, frequent_merchant_name=frequent_merchant_name, frequent_merchant_visits=frequent_merchant_visits, most_expensive_transaction=most_expensive_transaction, frequent_tag_purchases=frequent_tag_purchases, frequent_tag_name=frequent_tag_name, tags=tags, spent_dict=spent_dict, merch_dict=merch_dict, user=user, budget_status=budget_status, tag_percentage=tag_percentage, merchant_percentage=merchant_percentage)
 
 if __name__ == '__main__':
     app.run(debug=True)

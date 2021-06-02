@@ -32,10 +32,22 @@
         <p class="left">£{{spent_dict[key]}} spent on {{key}}</p>
     {% endfor %}
 </div>
-<div class="box3" id="merchantbreakdown">
+<div class="box2" id="tagpercentage">
+    <h4 class="centre">Tag breakdown (Percentage)</h4>
+    {% for key in tag_percentage %}
+        <p class="left">{{tag_percentage[key]}}% spent on {{key}}</p>
+    {% endfor %}
+</div>
+<div class="box1" id="merchantbreakdown">
     <h4 class="centre">Spending breakdown by Merchant</h4>
     {% for key in merch_dict %}
         <p class="right">£{{merch_dict[key]}} spent on {{key}}</p>
+    {% endfor %}
+</div>
+<div class="box3" id="merchantpercentage">
+    <h4 class="centre">Merchant breakdown (Percentage)</h4>
+    {% for key in merchant_percentage%}
+        <p class="right">{{merchant_percentage[key]}}% spent on {{key}}</p>
     {% endfor %}
 </div>
 <div class="box2">
