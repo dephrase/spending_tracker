@@ -1,6 +1,9 @@
 from db.run_sql import run_sql
 from models.tag import Tag
 from models.transaction import Transaction
+from models.merchant import Merchant
+import repositories.merchant_repository as merchant_repository
+
 
 def save(tag):
     sql = "INSERT INTO tags (tag_name, tag_description) VALUES (%s, %s) RETURNING id"
@@ -47,7 +50,8 @@ def transactions(tag):
     values = [tag.id]
     results = run_sql(sql, values)
     for row in results:
-        transaction = Transaction(row['transaction_name'], row['tag_id'], row['merchant_id'], row['amount_spent'], row['id'])
+        merchant = merchant_repository.select(row['merchant_id'])
+        transaction = Transaction(row['transaction_name'], tag, merchant, row['amount_spent'], row['id'])
         transactions.append(transaction)
     return transactions
 

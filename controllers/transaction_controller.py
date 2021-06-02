@@ -58,7 +58,7 @@ def update_transaction(id):
 def filter_bytag(tag_id):
     tag = tag_repository.select(tag_id)
     transactions = tag_repository.transactions(tag)
-    return render_template('/transactions/filter.html', transactions=transactions)
+    return render_template('/transactions/filter.html', transactions=transactions, tag=tag)
 
 
 

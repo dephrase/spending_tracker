@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="box1 left">
 
-
+    <h2>View all transactions for tag: {{tag.tag_name}}</h2>
 <table class="transactions-table" style="width:100%">
     <tr>
       <th>Transaction</th>
@@ -16,7 +17,7 @@
         <p>{{transaction.transaction_name}}</p>
     </th>
     <th>
-        <p>{{transaction.tag.tag_name}}</p>
+        <p>{{tag.tag_name}}</p>
     </th>
     <th>
         {{transaction.merchant.merchant_name}}
@@ -26,7 +27,7 @@
     </th>
     {% endfor %}
     </tr>
-
+</div>
 
 
 

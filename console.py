@@ -43,6 +43,9 @@ merchant_repository.save(merchant4)
 merchant5 = Merchant("Virgin", "Mortgage Provider")
 merchant_repository.save(merchant5)
 
+merchant6 = Merchant("Uber Eats", "Online takeaway service")
+merchant_repository.save(merchant6)
+
 transaction1 = Transaction("Weekly Shop", tag1, merchant1, 40)
 transaction_repository.save(transaction1)
 
@@ -57,6 +60,9 @@ transaction_repository.save(transaction4)
 
 transaction5 = Transaction("McDonalds", tag4, merchant3, 22)
 transaction_repository.save(transaction5)
+
+transaction6 = Transaction("Katsu Curry", tag4, merchant6, 25)
+transaction_repository.save(transaction6)
 
 
 
