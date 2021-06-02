@@ -8,11 +8,13 @@
     background-color: #edf5e1;
     color: #05386b;
     padding-bottom: 35px;
+    text-decoration: none;
 }
 
 .header-item {
     padding-top: 30px;
     width: 200px;
+    text-decoration: none;
 }
 
 .dropdown-content {
@@ -22,6 +24,7 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
+    text-decoration: none;
 }
 
 .headerbox {
@@ -35,6 +38,7 @@
     font-family: 'Vollkorn', serif;
     font-size: 20px;
     text-align: center;
+    text-decoration: none;
 
 }
 
@@ -134,4 +138,8 @@ th {
 .submit {
     margin-top: 20px;
     margin-bottom: 30px;
+}
+
+a {
+    text-decoration: none;
 }
