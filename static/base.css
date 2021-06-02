@@ -163,3 +163,7 @@ a {
 .box1link:hover {
     color: #cdcecb;
 }
+
+body {
+    margin: 0%;
+}
