@@ -11,7 +11,16 @@
     <h4 class="left">You have spent a total of £{{total_spending}}</h4>
     <h4 class="left">Your budget for this month is £{{user.budget}}</h4>
     <br>
-    <h4 class="left">Your current budget status is: {{budget_status}}</h4>
+    <span class="left">Your current budget status is: </span>
+    {% if budget_status == "Green" %}
+        <span class="green">{{budget_status}}</span>
+    {% elif budget_status == "Amber" %}
+        <span class="amber">{{budget_status}}</span>
+    {% elif budget_status == "Red" %}
+        <span class="red">{{budget_status}}</span>
+    {% else %}
+        <span class="notgood">{{budget_status}}</span>
+    {% endif %}
 </div>
 <div class="box2">
     <h4 class="right">You have made {{total_transactions}} transactions</h4>

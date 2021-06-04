@@ -167,3 +167,19 @@ a {
 body {
     margin: 0%;
 }
+
+.green {
+    color: green;
+}
+
+.amber {
+    color: orange;
+}
+
+.red {
+    color: red;
+}
+
+.notgood {
+    color: red;
+}
