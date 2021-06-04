@@ -124,6 +124,11 @@
     border: 1px solid black;
 }
 
+.tablecontainer {
+    height: 300px;
+    overflow: scroll;
+}
+
 tr {
     border: 1px solid #05386b;
 }
@@ -140,8 +145,9 @@ th {
 }
 
 .submit {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 30px;
+    border-radius: 5px;
 }
 
 a {
